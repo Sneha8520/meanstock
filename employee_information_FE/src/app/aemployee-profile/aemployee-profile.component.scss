@@ -1,0 +1,18 @@
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+/* Optionally, override default table styles */
+.p-table {
+  width: 100%;
+}
+
+.p-table th,
+.p-table td {
+  text-align: center;
+}
+
+.p-rating {
+  width: 80px;
+}

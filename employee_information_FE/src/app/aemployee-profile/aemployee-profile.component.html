@@ -1,0 +1,54 @@
+
+<p-toast></p-toast>
+
+<div class="flex justify-content-end flex-wrap">
+  <p-button label="Add New"  icon="pi pi-plus"  (click)="router.navigate(['/employee-add'])"></p-button>
+</div>
+<div class="flex justify-content-center flex-wrap font-bold text-xl">
+  <p>Employee Profiles</p>
+</div>
+
+<p-table [value]="employees" responsiveLayout="scroll" class="table">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Employee Name</th>
+      <th>Technology</th>
+      <th>Experience</th>
+      <th>Goal Setting</th>
+       <th>Skill Rating</th>
+      <th>Attitude Rating</th>
+      <th>Communication Rating</th>
+      <th>Feedback</th>
+      <th>Action</th>
+
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-employee>
+    <tr>
+      <td>{{ employee.employeeName }}</td>
+      <td>{{ employee.technology }}</td>
+      <td>{{ employee.experience }}</td>
+      <td>{{ employee.goal }}</td>
+      <td>{{ employee.skill }}</td>
+      <td>{{ employee.attitude }}</td>
+      <td>{{ employee.communciation }}</td>
+      <td>{{ employee.feedback }}</td>
+      <td class="flex">
+        <!-- Edit button in the Action column -->
+      <button pButton type="button" icon="pi pi-pencil" (click)="editEmployee(employee)" class="mr-2"></button>
+      <!-- Simple Confirmation Example -->
+       <button pButton type="button"  icon="pi pi-trash" class="btn btn-danger w-100" (click)="confirmDelete(employee)"></button>
+        <p-dialog header="Confirm Delete" [(visible)]="displayConfirmDialog">
+        <p>Are you sure you want to delete this employee?</p>
+        <p-footer>
+          <button pButton label="Yes" icon="pi pi-check" (click)="onDelete()"></button>
+          <button pButton label="No" icon="pi pi-times" (click)="displayConfirmDialog = false"></button>
+        </p-footer>
+      </p-dialog>
+      </td>
+
+    </tr>
+  </ng-template>
+</p-table>
+

@@ -1,0 +1,129 @@
+<p-toast></p-toast>
+
+<div class="mb-3">
+  <p-button label="Back" (click)="router.navigate(['/employee-profile'])"></p-button>
+</div>
+<div class="flex justify-content-center align-items-center h-screen">
+  <div class="card surface-50 bg-center m-5" [style]="{ width: '500px' }">
+    <div class="mt-3 p-5">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="formgrid grid gap-3">
+          <!-- Employee Name Field -->
+          <div class="field col">
+            <label for="employeeName" class="form-label">Employee Name</label>
+            <input
+              id="employeeName"
+              pInputText
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              formControlName="employeeName"
+            />
+            <div *ngIf="employeeForm.get('employeeName').touched && employeeForm.get('employeeName').invalid" class="error-message">
+              <div *ngIf="employeeForm.get('employeeName').hasError('required')">Employee name is required.</div>
+              <div *ngIf="employeeForm.get('employeeName').hasError('pattern')">Employee name must only contain letters and spaces.</div>
+            </div>
+          </div>
+
+          <!-- Technology Field -->
+          <div class="field col">
+            <label for="technology" class="form-label">Technology</label>
+            <input
+              id="technology"
+              pInputText
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              formControlName="technology"
+            />
+            <div *ngIf="employeeForm.get('technology').touched && employeeForm.get('technology').invalid" class="error-message">
+              <div *ngIf="employeeForm.get('technology').hasError('technology')">Employee name is required.</div>
+              <div *ngIf="employeeForm.get('technology').hasError('technology')">Employee name must only contain letters and spaces.</div>
+            </div>
+          </div>
+
+          <!-- Experience Field -->
+          <div class="field col">
+            <label for="experience" class="form-label">Experience</label>
+            <input
+              id="experience"
+              pInputText
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              formControlName="experience"
+            />
+            <div *ngIf="employeeForm.get('experience').touched && employeeForm.get('experience').invalid" class="error-message">
+              <div *ngIf="employeeForm.get('experience').hasError('required')">Experience is required.</div>
+              <div *ngIf="employeeForm.get('experience').hasError('pattern')">Experience must be a number.</div>
+            </div>
+          </div>
+
+          <!-- Skill Rating -->
+          <div class="field col">
+            <label class="form-label">Skill</label>
+            <p-rating formControlName="skill" [cancel]="false"></p-rating>
+            <div *ngIf="employeeForm.get('skill').touched && employeeForm.get('skill').invalid" class="error-message">
+              Skill is required.
+            </div>
+          </div>
+
+          <!-- Attitude Rating -->
+          <div class="field col">
+            <label class="form-label">Attitude</label>
+            <p-rating formControlName="attitude" [cancel]="false"></p-rating>
+            <div *ngIf="employeeForm.get('attitude').touched && employeeForm.get('attitude').invalid" class="error-message">
+              Attitude is required.
+            </div>
+          </div>
+
+          <!-- Communication Rating -->
+          <div class="field col">
+            <label class="form-label">Communication</label>
+            <p-rating formControlName="communciation" [cancel]="false"></p-rating>
+            <div *ngIf="employeeForm.get('communciation').touched && employeeForm.get('communciation').invalid" class="error-message">
+              Communication is required.
+            </div>
+          </div>
+
+          <!-- Goal Setting Field -->
+          <div class="field col">
+            <label for="goal" class="form-label">Goal Setting</label>
+            <input
+              id="goal"
+              pInputText
+              type="text"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              formControlName="goal"
+            />
+            <div *ngIf="employeeForm.get('goal').touched && employeeForm.get('goal').invalid" class="error-message">
+              <div *ngIf="employeeForm.get('goal').hasError('required')">Goal is required.</div>
+              <div *ngIf="employeeForm.get('goal').hasError('pattern')">Goal must only contain letters and spaces.</div>
+            </div>
+          </div>
+
+          <!-- Feedback Field -->
+          <div class="field col-12">
+            <textarea
+              rows="5"
+              class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              pInputTextarea
+              formControlName="feedback"
+              placeholder="Enter Your Feedback"
+            ></textarea>
+            <div *ngIf="employeeForm.get('feedback').touched && employeeForm.get('feedback').invalid" class="error-message">
+              <div *ngIf="employeeForm.get('feedback').hasError('required')">Feedback is required.</div>
+              <div *ngIf="employeeForm.get('feedback').hasError('pattern')">Feedback must only contain letters and spaces.</div>
+            </div>
+          </div>
+
+          <!-- Submit and Cancel Buttons -->
+          <div class="field col-12 flex justify-content-between">
+            <button pButton label="Submit" class="btn btn-primary w-full mr-2"></button>
+            <button pButton label="Cancel" class="btn btn-secondary w-full" (click)="onCancel()"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
